@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pract3/theme/app_theme.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -7,32 +8,50 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Componentes de flutter'),
+        title: const Text('Componentes de Flutter'),
       ),
-        body: ListView(
-          children: const <Widget>[
-              ListTile(
-                title: Text('Jeny sad'),
-                subtitle: Text('Huamantla - 14/feb/2024'),
-                leading: Icon(Icons.casino),
-                trailing: Icon(Icons.arrow_right_alt_rounded),
+      body: ListView(
+        children: <Widget>[
+          ListTile(
+            title: Text(
+              'Entradas',
+              style: AppTheme.lightTheme.textTheme.headlineLarge,
+            ),
+            subtitle: Text(
+              'Introducción de valores',
+               style: AppTheme.lightTheme.textTheme.bodySmall,
               ),
-              Divider(),
-              ListTile(
-                title: Text('Jeny feliz'),
-                subtitle: Text('Huamantla - 90/feb/2024'),
-                leading: Icon(Icons.price_check_sharp),
-                trailing: Icon(Icons.arrow_right_alt_rounded),
+            leading: const Icon(Icons.rocket_launch),
+            trailing: const Icon(Icons.arrow_circle_right_rounded),
+          ),
+          const Divider(),
+          ListTile(
+            title: Text(
+              'ListView.builder',
+              style: AppTheme.lightTheme.textTheme.headlineLarge,
+            ),
+            subtitle: Text(
+              'Lista con desplazamiento infinito',
+               style: AppTheme.lightTheme.textTheme.bodySmall,
               ),
-              Divider(),
-              ListTile(
-                title: Text('Jeny confundida'),
-                subtitle: Text('Huamantla - 99/feb/2024'),
-                leading: Icon(Icons.price_change_rounded),
-                trailing: Icon(Icons.arrow_right_alt_rounded),
+            leading: const Icon(Icons.format_list_bulleted),
+            trailing: const Icon(Icons.arrow_circle_right_rounded),
+          ),
+          const Divider(),
+          ListTile(
+            title: Text(
+              'Notificaciones',
+              style: AppTheme.lightTheme.textTheme.headlineLarge,
+            ),
+            subtitle: Text(
+              'Mostrar una notificación',
+               style: AppTheme.lightTheme.textTheme.bodySmall,
               ),
-            ],
-        ),  
+            leading: const Icon(Icons.notifications_active),
+            trailing: const Icon(Icons.arrow_circle_right_rounded),
+          ),
+        ],
+      ),
     );
   }
 }
