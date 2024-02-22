@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pract3/screens/data_screen.dart';
+import 'package:pract3/screens/infinite_scroll_screen.dart';
 import 'package:pract3/screens/inputs_screen.dart';
+import 'package:pract3/screens/notifications_screen.dart';
 import 'package:pract3/theme/app_theme.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -35,6 +38,7 @@ class HomeScreen extends StatelessWidget {
             //acaba lo nuevo
           
           ),
+
           const Divider(),
           ListTile(
             title: Text(
@@ -47,8 +51,18 @@ class HomeScreen extends StatelessWidget {
               ),
             leading: const Icon(Icons.format_list_bulleted),
             trailing: const Icon(Icons.arrow_circle_right_rounded),
+
+             //agreganuevo
+            onTap: () {
+              final ruta2 = MaterialPageRoute(builder: (context) {
+                return const InfiniteScrollScreen(); 
+              });
+              Navigator.push(context,ruta2);
+            },
+            //acaba lo nuevo
           ),
           const Divider(),
+
           ListTile(
             title: Text(
               'Notificaciones',
@@ -60,6 +74,15 @@ class HomeScreen extends StatelessWidget {
               ),
             leading: const Icon(Icons.notifications_active),
             trailing: const Icon(Icons.arrow_circle_right_rounded),
+
+             //agreganuevo
+            onTap: () {
+              final ruta3 = MaterialPageRoute(builder: (context) {
+                return const NotificationsScreen(); 
+              });
+              Navigator.push(context,ruta3);
+            },
+            //acaba lo nuevo
           ),
         ],
       ),
