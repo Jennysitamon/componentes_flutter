@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
             ),
             leading: IconTheme(
               data: AppTheme.lightTheme.iconTheme,
-              child: const Icon(Icons.import_contacts_sharp),
+              child: const Icon(Icons.favorite),
             ),
             trailing: IconTheme(
               data: AppTheme.lightTheme.iconTheme,
