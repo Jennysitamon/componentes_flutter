@@ -32,7 +32,7 @@ class AppTheme{
             backColor,
           ),
           foregroundColor: MaterialStateProperty.all(
-            const Color.fromARGB(255, 255, 214, 100),
+            const Color.fromARGB(255, 121, 105, 61),
           ),
           textStyle: MaterialStateProperty.all(
             GoogleFonts.pacifico(fontSize: 16.0,)
@@ -41,7 +41,7 @@ class AppTheme{
       ),
       textTheme: TextTheme(
         //Titulos muy grandes
-        headlineLarge: GoogleFonts.playfair(
+        headlineLarge: GoogleFonts.dancingScript(
           color: primaryColor,
           fontSize: 26.5,
           fontWeight: FontWeight.w500,
@@ -51,7 +51,7 @@ class AppTheme{
           decorationStyle: TextDecorationStyle.dotted,
           decorationThickness: 2.0,
         ),
-        headlineMedium: GoogleFonts.montserrat(
+        headlineMedium: GoogleFonts.macondo(
           color: secondaryColor,
           fontSize: 14,
           fontWeight: FontWeight.bold,
