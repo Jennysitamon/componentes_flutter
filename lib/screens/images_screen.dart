@@ -71,9 +71,7 @@ class _ImagesScreenState extends State<ImagesScreen> {
             placeholder: kTransparentImage, 
             image: 'https://i.pinimg.com/1200x/2b/6c/78/2b6c7874e57c38253c4f5d94f6d65e1d.jpg'),
         ),
-
       ],
     );
-
   }
 }

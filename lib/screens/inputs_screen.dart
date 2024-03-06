@@ -11,6 +11,9 @@ class InputsScreen extends StatefulWidget {
 class _InputsScreenState extends State<InputsScreen> {
   bool switchValue = false; //Controlar el widget switch
   double sliderValue = 0.0; // Controla el widget slider
+  //nuevo hoy
+  int radioSelected = 0;
+  //termina 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +28,9 @@ class _InputsScreenState extends State<InputsScreen> {
             entradaNombre(),
             entradaSwitch(),
             entradaSlider(),
+            //nuevo hoy
+            entradaRadio(),
+            //termina nuevo
             const ElevatedButton(
                     onPressed: null,
                     child: Text(
@@ -106,4 +112,54 @@ class _InputsScreenState extends State<InputsScreen> {
       ],
     );
   }
+  //nuevo hoy
+  Column entradaRadio(){
+    return Column(
+      children: [
+        Text(
+          '¿Qué prefieres para desarrollo movil?',
+          style: AppTheme.lightTheme.textTheme.headlineLarge,
+        ),
+        ListTile(
+          title: Text(
+            'Kotlin',
+            style: AppTheme.lightTheme.textTheme.headlineSmall,
+          ),
+          leading: Transform.scale(
+            scale: 1.5,
+            child: Radio(
+              value: 1,
+              groupValue: radioSelected,
+              onChanged: (value) {
+                setState(() {
+                radioSelected = value!;
+                print('Selección del botón radio: $radioSelected');
+                });
+              },
+            ),
+          ),
+        ),
+        ListTile(
+          title: Text(
+            'Flutter',
+            style: AppTheme.lightTheme.textTheme.headlineSmall,
+          ),
+          leading: Transform.scale(
+            scale: 1.5,
+            child: Radio(
+              value: 2,
+              groupValue: radioSelected,
+              onChanged: (value) {
+                setState(() {
+                radioSelected = value!;
+                print('Selección del botón radio: $radioSelected');
+                });
+              },
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+  //termina
 }
