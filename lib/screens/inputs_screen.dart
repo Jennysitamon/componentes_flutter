@@ -13,7 +13,10 @@ class _InputsScreenState extends State<InputsScreen> {
   double sliderValue = 0.0; // Controla el widget slider
   //nuevo hoy
   int radioSelected = 0;
-  //termina 
+  bool isChecked1 = false;
+  bool isChecked2 = false;
+  bool isChecked3 = false;
+  //termina
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,12 +33,17 @@ class _InputsScreenState extends State<InputsScreen> {
             entradaSlider(),
             //nuevo hoy
             entradaRadio(),
+            Text(
+              '¿Qué usas para correr tus apps?',
+              style: AppTheme.lightTheme.textTheme.headlineLarge,
+            ),
+            entradasCheck(),
             //termina nuevo
             const ElevatedButton(
-                    onPressed: null,
-                    child: Text(
-                      'Guardar',
-                    )),
+                onPressed: null,
+                child: Text(
+                  'Guardar',
+                )),
           ],
         ),
       ),
@@ -45,11 +53,11 @@ class _InputsScreenState extends State<InputsScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.cottage),
             label: 'Inicio',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.data_exploration),
-              label: 'Datos',
-              ),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.data_exploration),
+            label: 'Datos',
+          ),
         ],
       ),
     );
@@ -112,8 +120,9 @@ class _InputsScreenState extends State<InputsScreen> {
       ],
     );
   }
+
   //nuevo hoy
-  Column entradaRadio(){
+  Column entradaRadio() {
     return Column(
       children: [
         Text(
@@ -132,8 +141,8 @@ class _InputsScreenState extends State<InputsScreen> {
               groupValue: radioSelected,
               onChanged: (value) {
                 setState(() {
-                radioSelected = value!;
-                print('Selección del botón radio: $radioSelected');
+                  radioSelected = value!;
+                  print('Selección del botón radio: $radioSelected');
                 });
               },
             ),
@@ -151,11 +160,66 @@ class _InputsScreenState extends State<InputsScreen> {
               groupValue: radioSelected,
               onChanged: (value) {
                 setState(() {
-                radioSelected = value!;
-                print('Selección del botón radio: $radioSelected');
+                  radioSelected = value!;
+                  print('Selección del botón radio: $radioSelected');
                 });
               },
             ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  //termina
+  //nuevohoy
+  Row entradasCheck() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Text(
+          'Navegador',
+          style: AppTheme.lightTheme.textTheme.bodySmall,
+        ),
+        Transform.scale(
+          scale: 1.5,
+          child: Checkbox(
+            value: isChecked1,
+            onChanged: (value) {
+              setState(() {
+                isChecked1 = value!;
+              });
+            },
+          ),
+        ),
+         Text(
+          'Emulador',
+          style: AppTheme.lightTheme.textTheme.bodySmall,
+        ),
+        Transform.scale(
+          scale: 1.5,
+          child: Checkbox(
+            value: isChecked2,
+            onChanged: (value) {
+              setState(() {
+                isChecked2 = value!;
+              });
+            },
+          ),
+        ),
+         Text(
+          'Smartphone',
+          style: AppTheme.lightTheme.textTheme.bodySmall,
+        ),
+        Transform.scale(
+          scale: 1.5,
+          child: Checkbox(
+            value: isChecked2,
+            onChanged: (value) {
+              setState(() {
+                isChecked2 = value!;
+              });
+            },
           ),
         ),
       ],
