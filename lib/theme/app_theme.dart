@@ -6,18 +6,18 @@ class AppTheme{
   //constante de un color primario
   static const primaryColor = Color.fromARGB(223, 172, 103, 133);
   //constante de un color secundario
-  static const secondaryColor = Color.fromARGB(255, 100, 53, 21); 
+  static const secondaryColor = Color.fromARGB(255, 202, 133, 185); 
   //constante de color de fondo
-  static const backColor = Color.fromARGB(224, 252, 252, 252);
+  static const backColor = Color.fromARGB(223, 240, 221, 245);
   //constante de color
-  static const backColor2 = Color.fromARGB(223, 170, 100, 83);
+  static const backColor2 = Color.fromARGB(223, 170, 83, 105);
   //constante de tema
   static final ThemeData lightTheme = ThemeData.light().copyWith(
     scaffoldBackgroundColor: backColor,
         appBarTheme: AppBarTheme(
           color: primaryColor,
-          titleTextStyle: GoogleFonts.aBeeZee(
-            color: Colors.white,
+          titleTextStyle: GoogleFonts.dancingScript(
+            color: const Color.fromARGB(255, 204, 138, 138),
             fontSize: 28.5,
             fontWeight: FontWeight.bold,
           ),
@@ -32,7 +32,7 @@ class AppTheme{
             backColor,
           ),
           foregroundColor: MaterialStateProperty.all(
-            const Color.fromARGB(255, 121, 105, 61),
+            const Color.fromARGB(255, 73, 39, 68),
           ),
           textStyle: MaterialStateProperty.all(
             GoogleFonts.pacifico(fontSize: 16.0,)
@@ -51,13 +51,13 @@ class AppTheme{
           decorationStyle: TextDecorationStyle.dotted,
           decorationThickness: 2.0,
         ),
-        headlineMedium: GoogleFonts.macondo(
+        headlineMedium: GoogleFonts.dancingScript(
           color: secondaryColor,
           fontSize: 14,
           fontWeight: FontWeight.bold,
         ),
         //Estilo para texto muy pequeño
-        bodySmall: GoogleFonts.shadowsIntoLight(
+        bodySmall: GoogleFonts.dancingScript(
           color: secondaryColor,
           fontSize: 16.0,
         ),

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "387180656913",
+    "project_id": "componentes-8002c",
+    "storage_bucket": "componentes-8002c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387180656913:android:a2d920638514635d64b4b0",
+        "android_client_info": {
+          "package_name": "com.example.pract3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKAxUYCy5NozezJaSwSHi5lryyfuCS2r0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

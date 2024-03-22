@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pract3/screens/home_screen.dart';
 import 'package:pract3/theme/app_theme.dart';
 
+
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 

@@ -5,6 +5,7 @@ import 'package:pract3/screens/inputs_screen.dart';
 import 'package:pract3/screens/notifications_screen.dart';
 import 'package:pract3/theme/app_theme.dart';
 
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 

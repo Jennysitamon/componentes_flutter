@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:pract3/screens/data_screen.dart';
 import 'package:pract3/screens/home_screen.dart';
 import 'package:pract3/screens/images_screen.dart';
 import 'package:pract3/screens/infinite_scroll_screen.dart';
 import 'package:pract3/screens/notifications_screen.dart';
 import 'package:pract3/theme/app_theme.dart';
+import 'package:pract3/models/usuario_data.dart';
+
 
 class InputsScreen extends StatefulWidget {
   const InputsScreen({super.key});
@@ -13,13 +17,15 @@ class InputsScreen extends StatefulWidget {
 }
 
 class _InputsScreenState extends State<InputsScreen> {
-  bool switchValue = false; //Controlar el widget switch
-  double sliderValue = 0.0; // Controla el widget slider
-  //nuevo hoy
+  //controlador para campo de entrada de nombre
+  TextEditingController nombreController = TextEditingController();
+  //String? nombre;
+  bool switchValue = false;
+  double sliderValue = 0.0;
   int radioSelected = 0;
-  bool isChecked1 = false;
-  bool isChecked2 = false;
-  bool isChecked3 = false;
+  bool isCheked1 = false;
+  bool isCheked2 = false;
+  bool isCheked3 = false;
   int indexNavigation = 0;
 
   openScreen(int index, BuildContext context) {
@@ -40,7 +46,12 @@ class _InputsScreenState extends State<InputsScreen> {
       case 3:
         ruta = MaterialPageRoute(builder: (context) => const ImagesScreen());
         break;
+      case 4: 
+        SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+        //comportamiento solo en celulares
+        
     }
+
     setState(() {
       indexNavigation = index;
       Navigator.push(context, ruta);
@@ -70,20 +81,37 @@ class _InputsScreenState extends State<InputsScreen> {
             ),
             entradasCheck(),
             //termina nuevo
-            const ElevatedButton(
-                onPressed: null,
-                child: Text(
-                  'Guardar',
-                )),
+            //hacer que el boton funcione con datos: navig.push
+            //BOTÓN PARA GUARDAR Y Q PASE A DATA
+            ElevatedButton(
+              onPressed: () {
+                // instancia de usuario con los datos
+                UsuarioData datos = UsuarioData(
+                  nombre: nombreController.text,  //CONTROLADOOR 
+                  gustaFlutter: switchValue,
+                  valorFlutter: sliderValue,
+                  preferenciaMovil: radioSelected,
+                  navegador: isCheked1,
+                  emulador: isCheked2,
+                  smartphone: isCheked3,
+                );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => DataScreen(datos: datos)),
+                );
+              },
+              child: const Text('Guardar'),
+            ),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: indexNavigation,
-        backgroundColor: const Color.fromARGB(223, 214, 188, 200),
-        unselectedItemColor: const Color.fromARGB(223, 238, 105, 161),
-        selectedItemColor: const Color.fromARGB(255, 168, 129, 151),
-        unselectedLabelStyle: const TextStyle(color: AppTheme.primaryColor),
+        backgroundColor: const Color.fromARGB(223, 234, 132, 180),
+        unselectedItemColor: AppTheme.primaryColor,
+        selectedItemColor: AppTheme.backColor2,
+        unselectedLabelStyle: const TextStyle(color: AppTheme.backColor2),
         onTap: (index) => openScreen(index, context),
         items: const [
           BottomNavigationBarItem(
@@ -91,11 +119,11 @@ class _InputsScreenState extends State<InputsScreen> {
             label: 'Inicio',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt),
+            icon: Icon(Icons.list_alt_rounded),
             label: 'Lista',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.notification_add),
+            icon: Icon(Icons.notification_add_outlined),
             label: 'Notificación',
           ),
           BottomNavigationBarItem(
@@ -103,20 +131,22 @@ class _InputsScreenState extends State<InputsScreen> {
             label: 'Imagenes',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.exit_to_app),
-            label: 'Salir',
+            icon: Icon(Icons.exit_to_app_rounded),
+            label: 'Salida',
           ),
         ],
       ),
     );
   }
 
+  //función para la entrada de nombre
   TextField entradaNombre() {
     return TextField(
+      controller: nombreController,  
       style: AppTheme.lightTheme.textTheme.headlineMedium,
       decoration: InputDecoration(
         border: const UnderlineInputBorder(),
-        labelText: 'Escribe tu name:',
+        labelText: 'Escribe tu nombre:',
         labelStyle: AppTheme.lightTheme.textTheme.headlineLarge,
       ),
     );
@@ -147,7 +177,7 @@ class _InputsScreenState extends State<InputsScreen> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Indica que tanto te gusta Flutter: ',
+          'Indica qué tanto te gusta Flutter: ',
           style: AppTheme.lightTheme.textTheme.headlineLarge,
         ),
         Slider(
@@ -232,10 +262,10 @@ class _InputsScreenState extends State<InputsScreen> {
         Transform.scale(
           scale: 1.5,
           child: Checkbox(
-            value: isChecked1,
+            value: isCheked1,
             onChanged: (value) {
               setState(() {
-                isChecked1 = value!;
+                isCheked1 = value!;
               });
             },
           ),
@@ -247,25 +277,25 @@ class _InputsScreenState extends State<InputsScreen> {
         Transform.scale(
           scale: 1.5,
           child: Checkbox(
-            value: isChecked2,
+            value: isCheked2,
             onChanged: (value) {
               setState(() {
-                isChecked2 = value!;
+                isCheked2 = value!;
               });
             },
           ),
         ),
         Text(
-          'Smartphone',
+          'SmartPhone',
           style: AppTheme.lightTheme.textTheme.bodySmall,
         ),
         Transform.scale(
           scale: 1.5,
           child: Checkbox(
-            value: isChecked3,
+            value: isCheked3,
             onChanged: (value) {
               setState(() {
-                isChecked3 = value!;
+                isCheked3 = value!;
               });
             },
           ),
@@ -273,5 +303,4 @@ class _InputsScreenState extends State<InputsScreen> {
       ],
     );
   }
-  //termina
 }
